@@ -1,0 +1,28 @@
+   
+
+
+int longest_seq=0,tot_ways;
+for(i=0;i<items.size();i++)
+{ 
+      initialize temp to 0;
+
+      for(k=i-1;k>=0;k--)
+         if items[k]<items[i] then temp = Max{temp, S[k]}
+
+      for(k=i-1;k>=0;k--)
+         if (S[k] == temp && prices[k]<prices[i]) then increment L[i] by L[k]
+      
+      if L[i] is still 0 then L[i] = 1
+      
+      S[i] = 1 + temp
+      longest_seq = Max{longest_seq, S[i]}
+}
+
+for(i=0;i<items.size();i++)
+{
+      if (S[i] == longest_seq) then increment tot_ways by L[i]
+}
+      
+
+   return longest_seq,tot_ways;
+

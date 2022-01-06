@@ -1,0 +1,19 @@
+#define MAX 1000000
+
+bool num[MAX];
+int prime[80000];
+
+void seive()
+{
+	int i,j=0,k;
+	prime[0]=2;
+	for(i=3;i<SZ;i+=2)
+	{
+		if(!num[i])
+		{
+			prime[++j]=i;
+			if(i<SZ/i) for(k=i*i;k<SZ;k+=i) num[k]=true;
+		}
+	}
+	printf("total prime %d %d\n",j+1,prime[j]);
+}
